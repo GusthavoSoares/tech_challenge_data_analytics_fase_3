@@ -1,0 +1,307 @@
+--Análise da base tb_dh24--
+-- 1. Quantidade de registros
+SELECT COUNT(*) AS qtd_registros_24
+FROM tb_dh_24;
+-- 5217 Respostas da pesquisa--
+
+-- 2. Quantidade de colunas (não perguntas)
+SELECT COUNT(*) AS qtd_colunas_24
+FROM information_schema.columns
+WHERE table_name = 'tb_dh_24';
+-- 403 colunas (nao perguntas)--
+
+-- 3. Registros sem ID
+SELECT
+    COUNT(*) AS total_registros,
+    SUM(
+        CASE
+            WHEN "0.a_token" IS NULL
+              OR TRIM(CAST("0.a_token" AS VARCHAR)) = ''
+            THEN 1
+            ELSE 0
+        END
+    ) AS ids_nulos
+FROM tb_dh_24;
+-- Não há nenhuma linha com ID nulo/vazio--
+
+-- 4. Verificação de ID duplicado
+SELECT
+    "0.a_token" AS id,
+    COUNT(*) AS quantidade
+FROM tb_dh_24
+WHERE "0.a_token" IS NOT NULL
+GROUP BY "0.a_token"
+HAVING COUNT(*) > 1
+ORDER BY quantidade DESC;
+-- dois IDs duplicados: ald49tabosnu0wald4e57zebr5v7146b e 	
+lb7gt5hdqqxuguv2lb7gto44mpk3ejha --
+
+
+-- 5. Verificação se a quantidade de IDs únicos
+-- é a mesma quantidade de registros
+SELECT
+    COUNT(*) AS total_registros,
+    COUNT(DISTINCT "0.a_token") AS ids_unicos
+FROM tb_dh_24;
+-- não é igual devido aos IDs duplicados (2)
+
+-- 6. Verificação dos tipos de variáveis
+SELECT
+    data_type,
+    COUNT(*) AS quantidade_colunas
+FROM information_schema.columns
+WHERE table_schema = 'default'
+  AND table_name = 'tb_dh_24'
+GROUP BY data_type
+ORDER BY quantidade_colunas DESC;
+-- Todas variáveis varchar--
+
+--Atráves de Análise em Excel, são 73 perguntas distintas e a coluna de ID--
+
+--EDA_2024--
+-- 1. Distribuição por faixa etária
+SELECT
+    "1.a.1_faixa_idade" AS faixa_idade,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.a.1_faixa_idade" IS NOT NULL
+GROUP BY "1.a.1_faixa_idade"
+ORDER BY quantidade DESC;
+
+SELECT
+    approx_percentile(
+        TRY_CAST("1.a_idade" AS DOUBLE),
+        0.5
+    ) AS idade_mediana
+FROM tb_dh_24
+WHERE TRY_CAST("1.a_idade" AS INTEGER) IS NOT NULL;
+-- A idade mediana dos partipantes da pesquisa é de 31 anos, e a faixa de idade com maiores participantes é de 30-34 anos (29%)--
+
+-- 2. Gênero
+SELECT
+    "1.b_genero" AS genero,
+    COUNT(*) AS qtd,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.b_genero" IS NOT NULL
+GROUP BY "1.b_genero"
+ORDER BY qtd DESC;
+-- 76% dos profissionais são do gênero masculino, 23,5% feminino enquanto o 0,5% restante representa outros gêneros e pessoas que não informaram--
+
+-- 3. Etnia
+SELECT
+    "1.c_cor/raca/etnia" AS etnia,
+    COUNT(*) AS qtd,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.c_cor/raca/etnia" IS NOT NULL
+GROUP BY "1.c_cor/raca/etnia"
+ORDER BY qtd DESC;
+-- A maioria dos profissionais (66,67%) são brancos, seguidos por pardos (22,62%), pretos (6,75%) e amarelos (2,97%) --
+
+-- 4. PCD
+SELECT
+    "1.d_pcd" AS pcd,
+    COUNT(*) AS qtd,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.d_pcd" IS NOT NULL
+GROUP BY "1.d_pcd"
+ORDER BY qtd DESC;
+--Apenas 2,91% dos profssionais são pessoas com deficiência--
+
+-- 5. Região do país
+SELECT
+    "1.i.2_regiao_onde_mora" AS regiao,
+    COUNT(*) AS qtd,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.i.2_regiao_onde_mora" IS NOT NULL
+GROUP BY "1.i.2_regiao_onde_mora"
+ORDER BY qtd DESC;
+-- Sudeste (60,03%) é a região com mais profissionais da área de dados, seguida pelo Sul (19,76%) e Nordeste (9,89%) --
+
+-- 6. UF
+SELECT
+    "1.i.1_uf_onde_mora" AS uf_atual,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.i.1_uf_onde_mora" IS NOT NULL
+GROUP BY "1.i.1_uf_onde_mora"
+ORDER BY quantidade DESC;
+-- SP (39%) é a uf com maior profissionais de dados, seguida por MG (11%) e RJ (8%)--
+
+-- 7. Escolaridade
+SELECT
+    "1.l_nivel_de_ensino" AS nivel_de_ensino,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.l_nivel_de_ensino" IS NOT NULL
+GROUP BY "1.l_nivel_de_ensino"
+ORDER BY quantidade DESC;
+-- Cerca de 37% dos profissionais possuem posgrad, 33% graduaçãp/barachelado e outras escolaridades somam cerca de 30% do total--
+
+-- 8. Área de formação
+SELECT
+    "1.m_área_de_formação" AS formacao,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "1.m_área_de_formação" IS NOT NULL
+GROUP BY "1.m_área_de_formação"
+ORDER BY quantidade DESC;
+-- Os profissionais são majoritariamente de áreas de computação, engenharia de software e TI (39,79%), seguido por áres de engenharia (20,36%), economia/finanças (14,93%)--
+
+-- 9. Experiência na área de dados
+SELECT
+    "2.i_tempo_de_experiencia_em_dados" AS tempo_xp,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.i_tempo_de_experiencia_em_dados" IS NOT NULL
+GROUP BY "2.i_tempo_de_experiencia_em_dados"
+ORDER BY quantidade DESC
+LIMIT 3;
+-- A maioria dos profissionais em 2024 tinha uma experiência de 3 a 4 anos (26,57), seguido por profissionais entre 1 a 2 anos (18,09%) e profssionais entre 5 e 6 anos (15.91%)--
+
+-- 10. Cargo atual
+SELECT
+    "2.f_cargo_atual" AS cargo,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.f_cargo_atual" IS NOT NULL
+GROUP BY "2.f_cargo_atual"
+ORDER BY quantidade DESC;
+-- A pesquisa apresenta pelo menos 16 cargos distintos na área de dados, sendo os três principais analista (26,82%), cientista (18,34%) e engenheiro (13,17%)
+
+-- 11. Senioridade
+SELECT
+    "2.g_nivel" AS senioridade,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.g_nivel" IS NOT NULL
+GROUP BY "2.g_nivel"
+ORDER BY quantidade DESC;
+--Cerca de 26.82% não responderam, mas os seniores (30,15%) representam maiora, seguido dos plenos (26,39) e dos juniores (16,64%)
+
+-- 12. Faixa salarial
+SELECT
+    "2.h_faixa_salarial" AS faixa_salario,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.h_faixa_salarial" IS NOT NULL
+GROUP BY "2.h_faixa_salarial"
+ORDER BY quantidade DESC;
+-- Há um destauqe para a faixa de 8k-12k mas um equilibrio entre as faixas de 4k-6k, 6k-8k, 12k-16k com elas representando cerca de 37%
+
+-- 13. Modelo atual de trabalho
+SELECT
+    "2.r_modelo_de_trabalho_atual" AS modelo_atual,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.r_modelo_de_trabalho_atual" IS NOT NULL
+GROUP BY "2.r_modelo_de_trabalho_atual"
+ORDER BY quantidade DESC;
+-- O modelo 100% remoto é o maior com 42,59%, seguido do híbrido flex com 19,15%--
+
+-- 14. Modelo de trabalho desejado
+SELECT
+    "2.s_modelo_de_trabalho_ideal" AS modelo_desejado,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "2.s_modelo_de_trabalho_ideal" IS NOT NULL
+GROUP BY "2.s_modelo_de_trabalho_ideal"
+ORDER BY quantidade DESC;
+-- novamente os modelos 100% remoto e híbrido flex são os principais modelos, enquanto o 100% presenvial é desejado por apenas 1,74% dos profissionais que participaram da pesquisa--
+
+-- 15. Uso básico de IA
+-- Classificação binária a partir da pergunta sobre
+-- uso de ChatGPT/Copilot no trabalho
+-- 15. Uso básico de IA
+SELECT
+    CASE
+        WHEN "4.m_usa_chatgpt_ou_copilot_no_trabalho?" =
+             'Não utilizo nenhum tipo de solução de IA Generativa para melhorar a produtividade no dia a dia.'
+        THEN 'Não utiliza IA Generativa'
+        ELSE 'Utiliza IA Generativa'
+    END AS uso_ia,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "4.m_usa_chatgpt_ou_copilot_no_trabalho?" IS NOT NULL
+GROUP BY
+    CASE
+        WHEN "4.m_usa_chatgpt_ou_copilot_no_trabalho?" =
+             'Não utilizo nenhum tipo de solução de IA Generativa para melhorar a produtividade no dia a dia.'
+        THEN 'Não utiliza IA Generativa'
+        ELSE 'Utiliza IA Generativa'
+    END
+ORDER BY quantidade DESC;
+--baseado nessa classificação de uso ou nao de IA, temos que 95,71%% dos profissionais usam IAs em alguma parte do trabalho
+
+-- 16. IA Generativa / LLM é prioridade na empresa?
+SELECT
+    "3.e_ai_generativa_e_llm_é_uma_prioridade?" AS ia_prioridade,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_24
+WHERE "3.e_ai_generativa_e_llm_é_uma_prioridade?" IS NOT NULL
+GROUP BY "3.e_ai_generativa_e_llm_é_uma_prioridade?"
+ORDER BY quantidade DESC;
+-- Neste caso a maioria não respondeu a questão (80%) dos que responderam, 10% diz que é prioridade para este ou pros proximos anos

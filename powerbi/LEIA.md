@@ -1,7 +1,13 @@
 # Power BI
 
-`tc3_state_of_data.pbix`: o dashboard executivo, 15 telas. Os prints dele são o
-material da apresentação, que é o entregável 1.
+`tc3_state_of_data.pbix`: o dashboard executivo, 15 telas. Os prints dele são
+matéria-prima do material executivo, que é o entregável 1.
+
+`tc3_dashboard.pdf`: as mesmas 15 telas exportadas, para quem quiser ver sem
+instalar o Power BI Desktop. Uma ressalva: as tabelas com rolagem saem
+cortadas na exportação, então a de recomendações mostra 2 das 6 decisões. As
+seis estão inteiras em `docs/RESPOSTA_P7.md` e na Gold, em
+`gold_dw_dim_recomendacao`.
 
 ## De onde vem o dado
 

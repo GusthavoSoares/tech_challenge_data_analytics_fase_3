@@ -36,15 +36,15 @@
 <rect x="170" y="240" width="260" height="72" rx="4" fill="#E1F5EE" stroke="#0F6E56"/>
 <text class="th" x="300" y="266" text-anchor="middle" fill="#085041">Silver: harmonização</text>
 <text class="ts" x="300" y="284" text-anchor="middle" fill="#0F6E56">união das 3 edições</text>
-<text class="ts" x="300" y="300" text-anchor="middle" fill="#0F6E56">14.002 linhas × 76 colunas</text>
+<text class="ts" x="300" y="300" text-anchor="middle" fill="#0F6E56">14.002 linhas × 79 colunas</text>
 
 <line x1="300" y1="312" x2="300" y2="346" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a)"/>
 <text class="ts" x="312" y="334" fill="#5F5E5A">Glue job (Spark)</text>
 
 <rect x="170" y="348" width="260" height="72" rx="4" fill="#E1F5EE" stroke="#0F6E56"/>
 <text class="th" x="300" y="374" text-anchor="middle" fill="#085041">Gold: modelagem dimensional</text>
-<text class="ts" x="300" y="392" text-anchor="middle" fill="#0F6E56">16 tabelas: 1 fato, 13 dimensões</text>
-<text class="ts" x="300" y="408" text-anchor="middle" fill="#0F6E56">catálogo de opções e bridge</text>
+<text class="ts" x="300" y="392" text-anchor="middle" fill="#0F6E56">16 tabelas: 1 fato, 14 dimensões</text>
+<text class="ts" x="300" y="408" text-anchor="middle" fill="#0F6E56">sendo uma o catálogo, e a bridge</text>
 
 <line x1="300" y1="420" x2="300" y2="454" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a)"/>
 

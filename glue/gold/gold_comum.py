@@ -15,6 +15,7 @@ Autor: Caio Bosnic (dono da Silver e da Gold base)
 import functools
 import operator
 import os
+import sys
 
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
@@ -23,6 +24,16 @@ from pyspark.sql import types as T
 # --------------------------------------------------------------------------- #
 # caminhos: mesma ideia da Silver, reaproveitando o leitor de parâmetro dela
 # --------------------------------------------------------------------------- #
+
+# `config_silver` mora em `glue/silver`. Este bootstrap existe para o módulo
+# poder ser importado sozinho: sem ele, `import gold_comum` só funciona depois
+# que algum job já arrumou o sys.path, e quebra num notebook que importe daqui
+# primeiro.
+_AQUI = os.path.dirname(os.path.abspath(__file__))
+for _p in (os.path.join(_AQUI, "..", "silver"), _AQUI):
+    _p = os.path.abspath(_p)
+    if os.path.isdir(_p) and _p not in sys.path:
+        sys.path.insert(0, _p)
 
 from config_silver import parametro  # noqa: E402
 

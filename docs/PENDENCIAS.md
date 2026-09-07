@@ -6,10 +6,9 @@ Entregáveis e decisões ainda abertos. Ordem de prioridade.
 
 ## Entregáveis
 
-| O que | Onde começa |
-|---|---|
-| Apresentação executiva (PPT) | a partir dos prints do dashboard e dos números de `results/` |
-| Notebooks `03_gold.ipynb` e `04_analises_e_graficos.ipynb` | `notebooks/` hoje tem Bronze, Silver e a validação da Silver |
+Os três estão entregues: material executivo em `apresentacao/`, diagrama da
+arquitetura em `docs/arquitetura_tc3.drawio` e dentro do material, scripts e
+notebooks em `glue/`, `sql/` e `notebooks/`.
 
 ## Aberto com o grupo
 

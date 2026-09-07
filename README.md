@@ -36,7 +36,7 @@ S3 · SILVER          união harmonizada das 3 edições (SOT)
    │  Glue Job (PySpark)
    ▼
 S3 · GOLD            modelo dimensional (SPEC)
-   │                 1 fato + 12 dimensões + catálogo + bridge + 2 desconectadas
+   │                 1 fato + 11 dimensões + catálogo + bridge + 2 desconectadas
    ▼
 Athena  →  consultas analíticas  →  results/*.csv
    │
@@ -55,11 +55,13 @@ Diagrama completo em [`docs/`](docs/).
 
 | Pasta | O que tem |
 |---|---|
-| `notebooks/` | **entregável 3**: o pipeline demonstrado passo a passo |
+| `apresentacao/` | **entregável 1**: o material executivo em .pptx e .pdf, 25 slides |
+| `notebooks/` | **entregável 3**: os cinco notebooks, ingestão a gráficos |
 | `glue/` | o código que roda na AWS, exatamente como está lá |
 | `sql/` | DDL de catalogação e as consultas do Athena por pergunta |
 | `powerbi/` | o `.pbix` do dashboard executivo |
 | `docs/` | respostas das 7 perguntas, modelo, medidas, validações e decisões |
+| `results/` | CSV de cada consulta do Athena e os 7 gráficos em `graficos/` |
 | `data/amostras/` | amostra pequena para inspeção (a base vem do Kaggle) |
 | `dev/` | testes e utilitários de desenvolvimento, não fazem parte do pipeline |
 
@@ -116,9 +118,9 @@ Contrato completo em [`docs/CONTRATO_SILVER.md`](docs/CONTRATO_SILVER.md).
 
 ### Gold (Caio)
 
-Um star schema só, que responde as sete perguntas. **15 tabelas**: um fato no
-grão de respondente, 12 dimensões conformadas, um catálogo de opções e uma
-bridge que liga o fato às múltiplas escolhas.
+Um star schema só, que responde as sete perguntas. **16 tabelas**: um fato no
+grão de respondente, 11 dimensões conformadas, um catálogo de opções, uma bridge
+que liga o fato às múltiplas escolhas e duas tabelas desconectadas.
 
 Uma das dimensões, `dim_benchmark`, traz **referências externas de mercado**
 (Bain, Cetic.br, Brasscom, CAGED, Peers/MIT) para contextualizar os números da

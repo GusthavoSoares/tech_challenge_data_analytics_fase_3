@@ -56,8 +56,8 @@ não permitem um filtro cruzar páginas.
 | `gold_dw_dim_benchmark` | 8 | referências externas de mercado (desconectada) |
 | `gold_dw_dim_recomendacao` | 6 | as decisões recomendadas ao cliente (desconectada) |
 
-**16 tabelas.** Um fato, 12 dimensões, um catálogo, uma bridge e a tabela de
-recomendações.
+**16 tabelas.** Um fato, 11 dimensões conformadas, o catálogo de opções, a
+bridge, e mais duas sem relacionamento com o fato: benchmark e recomendações.
 
 As contagens das dimensões incluem os **membros de ausência nomeados**: em vez
 de deixar a FK nula e o Power BI inventar um membro "(Em branco)", a Gold grava

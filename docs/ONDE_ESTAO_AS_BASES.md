@@ -17,12 +17,12 @@ s3://<bucket>/entrada/     os mesmos 3 arquivos, sem tocar em nada
 bronze/state_data/         3 tabelas Parquet, tudo string, cópia fiel
    │  Glue Job tc3-silver
    ▼
-silver/state_data/         1 tabela, 14.002 linhas × 76 colunas,
+silver/state_data/         1 tabela, 14.002 linhas × 79 colunas,
    │                       particionada por ano_pesquisa
    │  Glue Job tc3-gold
    ▼
-gold/                      16 tabelas: 1 fato, 13 dimensões, catálogo de
-   │                       opções e bridge
+gold/                      16 tabelas: 1 fato, 14 dimensões
+   │                       (uma é o catálogo de opções) e a bridge
    ├──► Athena             as 7 consultas de sql/perguntas/
    └──► CSV ──► Power BI   tc3_state_of_data.pbix
 ```

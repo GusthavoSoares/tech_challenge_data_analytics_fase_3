@@ -1,0 +1,54 @@
+"ano_pesquisa","senioridade","genero","respondentes","pct_no_nivel","salario_medio"
+"2023","Fora da área de dados","Masculino","353","65.4",
+"2023","Fora da área de dados","Feminino","182","33.7",
+"2023","Fora da área de dados","Prefere não informar","3","0.6",
+"2023","Fora da área de dados","Outro","2","0.4",
+"2023","Gestor, sem senioridade","Masculino","633","80.4","18071.0"
+"2023","Gestor, sem senioridade","Feminino","152","19.3","15135.0"
+"2023","Gestor, sem senioridade","Prefere não informar","2","0.3","10501.0"
+"2023","Júnior","Masculino","727","71.2","3994.0"
+"2023","Júnior","Feminino","290","28.4","3728.0"
+"2023","Júnior","Prefere não informar","3","0.3","5834.0"
+"2023","Júnior","Outro","1","0.1","1501.0"
+"2023","Pleno","Masculino","946","75.1","7429.0"
+"2023","Pleno","Feminino","306","24.3","7283.0"
+"2023","Pleno","Prefere não informar","4","0.3","6751.0"
+"2023","Pleno","Outro","4","0.3","6126.0"
+"2023","Sênior","Masculino","901","77.5","13653.0"
+"2023","Sênior","Feminino","255","21.9","12355.0"
+"2023","Sênior","Prefere não informar","4","0.3","31001.0"
+"2023","Sênior","Outro","2","0.2","8501.0"
+"2024","Fora da área de dados","Masculino","268","75.7",
+"2024","Fora da área de dados","Feminino","84","23.7",
+"2024","Fora da área de dados","Outro","2","0.6",
+"2024","Gestor, sem senioridade","Masculino","842","80.6","20030.0"
+"2024","Gestor, sem senioridade","Feminino","199","19.0","17634.0"
+"2024","Gestor, sem senioridade","Prefere não informar","3","0.3","19167.0"
+"2024","Gestor, sem senioridade","Outro","1","0.1","40001.0"
+"2024","Júnior","Masculino","622","71.7","4101.0"
+"2024","Júnior","Feminino","242","27.9","4149.0"
+"2024","Júnior","Prefere não informar","3","0.3","14667.0"
+"2024","Pleno","Masculino","998","73.1","8111.0"
+"2024","Pleno","Feminino","363","26.6","7830.0"
+"2024","Pleno","Prefere não informar","3","0.2","8001.0"
+"2024","Pleno","Outro","2","0.1","7001.0"
+"2024","Sênior","Masculino","1196","77.9","14959.0"
+"2024","Sênior","Feminino","330","21.5","12479.0"
+"2024","Sênior","Prefere não informar","6","0.4","15251.0"
+"2024","Sênior","Outro","3","0.2","9001.0"
+"2025","Fora da área de dados","Masculino","170","72.3",
+"2025","Fora da área de dados","Feminino","61","26.0",
+"2025","Fora da área de dados","Prefere não informar","4","1.7",
+"2025","Gestor, sem senioridade","Masculino","562","81.2","20440.0"
+"2025","Gestor, sem senioridade","Feminino","130","18.8","18085.0"
+"2025","Júnior","Masculino","303","70.3","4406.0"
+"2025","Júnior","Feminino","124","28.8","3819.0"
+"2025","Júnior","Prefere não informar","3","0.7","2834.0"
+"2025","Júnior","Outro","1","0.2","1501.0"
+"2025","Pleno","Masculino","539","76.8","8303.0"
+"2025","Pleno","Feminino","161","22.9","8395.0"
+"2025","Pleno","Prefere não informar","2","0.3","7501.0"
+"2025","Sênior","Masculino","622","77.8","15153.0"
+"2025","Sênior","Feminino","172","21.5","12137.0"
+"2025","Sênior","Outro","3","0.4","9001.0"
+"2025","Sênior","Prefere não informar","2","0.3","22501.0"

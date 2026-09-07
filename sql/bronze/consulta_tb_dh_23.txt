@@ -1,0 +1,241 @@
+--Análise da base tb_dh23--
+--1. Quantidade de registros--
+SELECT COUNT (*) AS qtd_registros_23
+from tb_dh_23;
+-- 5923 Respostas da pesquisa--
+
+--2. Quantidade de Colunas (não perguntas)--
+select count(*) as qtd_colunas_23
+from information_schema.columns
+where table_name = 'tb_dh_23'
+-- 399 colunas (nao perguntas)--
+
+--3. registros sem id--
+SELECT
+    COUNT(*) AS total_registros,
+    SUM(
+        CASE
+            WHEN "_'p0'__'id'_#0" IS NULL
+              OR TRIM(CAST("_'p0'__'id'_#0" AS VARCHAR)) = ''
+            THEN 1
+            ELSE 0
+        END
+    ) AS ids_nulos
+FROM tb_dh_23;
+-- Não há nenhuma linha com ID nulo/vazio--
+
+--4. verificação de ID duplicado--
+SELECT
+    "_'p0'__'id'_#0" AS id,
+    COUNT(*) AS quantidade
+FROM tb_dh_23
+WHERE "_'p0'__'id'_#0" IS NOT NULL
+GROUP BY "_'p0'__'id'_#0"
+HAVING COUNT(*) > 1
+ORDER BY quantidade DESC;
+-- não há IDs duplicados--
+
+--5.Verificação se a quantidade de IDs únicas é a mesma de registros--
+SELECT
+    COUNT(*) AS total_registros,
+    COUNT(DISTINCT "_'p0'__'id'_#0") AS ids_unicos
+FROM tb_dh_23;
+show columns from tb_dh_23
+-- ids_unicos = qtd_registros -> entende-se que não correspondentes duplicados--
+
+--6. Verificação dos tipos de variáveis--
+SELECT
+    data_type,
+    COUNT(*) AS quantidade_colunas
+FROM information_schema.columns
+WHERE table_schema = 'default'
+  AND table_name = 'tb_dh_23'
+GROUP BY data_type
+ORDER BY quantidade_colunas DESC;
+-- Todas variáveis varchar--
+
+--Atráves de Análise em Excel, são 71 perguntas distintas e a coluna de ID--
+
+
+--EDA_2023--
+
+--1. Distribuição por faixa etária--
+select "_'p1_a_1_'__'faixa_idade'_#2" as faixa_idade,
+    count(*) as quantidade, round(100.0 *count(*)/SUM(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_a_1_'__'faixa_idade'_#2" is not NULL
+group BY "_'p1_a_1_'__'faixa_idade'_#2"
+order by quantidade desc;
+
+SELECT
+    approx_percentile(
+        TRY_CAST("_'p1_a_'__'idade'_#1" AS DOUBLE),
+        0.5
+    ) AS idade_mediana
+FROM tb_dh_23
+WHERE TRY_CAST("_'p1_a_'__'idade'_#1" AS INTEGER) IS NOT NULL;
+-- A idade mediana dos partipantes da pesquisa é de 30 anos, e a faixa de idade com maiores participantes é de 25-29 anos (31%)--
+
+--2.Gênero --
+select "_'p1_b_'__'genero'_#3" as genero, count(*) as qtd, 
+    round( 100 * count(*) / sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_b_'__'genero'_#3" is not NULL
+group by "_'p1_b_'__'genero'_#3"
+order by qtd desc
+-- 75% dos profissionais são do gênero masculindo, 24% feminino enquanto o 1% restante representa outros gêneros e pessoas que não informaram--
+
+--3. Etnia--
+select "_'p1_c_'__'cor/raca/etnia'_#4" as etnia, count(*) as qtd, 
+    round( 100 * count(*) / sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_c_'__'cor/raca/etnia'_#4" is not NULL
+group by "_'p1_c_'__'cor/raca/etnia'_#4"
+order by qtd desc
+-- A maioria dos profissionais (64%) são brancos, seguidos por pardos (24%), pretos (7%) e amarelos (2%) --
+
+--4. PCD--
+select "_'p1_d_'__'pcd'_#5" as pcd, count(*) as qtd, 
+    round( 100 * count(*) / sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_d_'__'pcd'_#5" is not NULL
+group by "_'p1_d_'__'pcd'_#5"
+order by qtd desc
+--Apenas 2% dos profssionais são pessoas com deficiência--
+
+--5. Região do País--
+select "_'p1_i_2_'__'regiao_onde_mora'_#24" as genero, count(*) as qtd, 
+    round( 100 * count(*) / sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_i_2_'__'regiao_onde_mora'_#24" is not NULL
+group by "_'p1_i_2_'__'regiao_onde_mora'_#24"
+order by qtd desc
+-- Sudeste (59%) é a região com mais profissionais da área de dados, seguida pelo Sul (18%) e Nordeste (11%) --
+
+--6. UF--
+select "_'p1_i_1_'__'uf_onde_mora'_#23" as uf_atual,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_i_1_'__'uf_onde_mora'_#23" is not NULL
+group by "_'p1_i_1_'__'uf_onde_mora'_#23"
+order by quantidade desc
+-- SP (39%) é a uf com maior profissionais de dados, seguida por MG (11%) e RJ (8%)--
+
+--7. Escolaridade--
+select "_'p1_l_'__'nivel_de_ensino'_#27" as nivel_de_ensino,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_l_'__'nivel_de_ensino'_#27" is not NULL
+group by "_'p1_l_'__'nivel_de_ensino'_#27"
+order by quantidade desc
+-- Cerca de 34% dos profissionais possuem posgrad, 34% graduaçãp/barachelado e outras escolaridades somam cerca de 32% do total--
+
+ --8. Área de formação--
+select "_'p1_m_'__'área_de_formação'_#28" as formacao,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p1_m_'__'área_de_formação'_#28" is not NULL
+group by "_'p1_m_'__'área_de_formação'_#28"
+order by quantidade desc
+-- Os profissionais são majoritariamente de áreas de computação, engenharia de software e TI (40,7%), seguido por áres de engenharia (20,37%), economia/finanças (15,38%)--
+
+ --9. Experiência--
+select "_'p2_i_'__'quanto_tempo_de_experiência_na_área_de_dados_você_tem?'_#37" as tempo_xp,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_i_'__'quanto_tempo_de_experiência_na_área_de_dados_você_tem?'_#37" is not NULL
+group by "_'p2_i_'__'quanto_tempo_de_experiência_na_área_de_dados_você_tem?'_#37"
+order by quantidade desc
+limit 3
+-- A maioria dos profissionais em 2023 tinha uma experiência de no máximo 2 anos (22,69%), seguido por profissionais entre 3 a 4 anos (20.95%) e profssionais com mais de 10 anos (10.52%)--
+
+ --10. Cargo Atual--
+select "_'p2_f_'__'cargo_atual'_#34" as cargo,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_f_'__'cargo_atual'_#34" is not NULL
+group by "_'p2_f_'__'cargo_atual'_#34"
+order by quantidade desc
+-- A pesquisa apresenta pelo menos 16 cargos distintos na área de dados, sendo os três principais analista (27,13%), cientista (17,14%) e engenheiro (13%)
+
+--11. Senioridade--
+select "_'p2_g_'__'nivel'_#35" as senioridade,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_g_'__'nivel'_#35" is not NULL
+group by "_'p2_g_'__'nivel'_#35"
+order by quantidade desc
+--Desconsiderando 27% dos profissionais que não responderam a questão, há um equilíbiro entre os níveis de senioridade Senior (26,81%), pleno (26,3%) e junior (19,76%)
+
+ --12. Faixa Salarial--
+select "_'p2_h_'__'faixa_salarial'_#36" as faixa_salario,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_h_'__'faixa_salarial'_#36" is not NULL
+group by "_'p2_h_'__'faixa_salarial'_#36"
+order by quantidade desc
+-- Há um equilibrio entre as faixas de 4k-6k, 6k-8k, 8k-12k e 12k-16k, com todas representando cerca de 68% das faixas totais respondids--
+
+ --13. Modelo atual de trabalho--
+select "_'p2_r_'__'atualmente_qual_a_sua_forma_de_trabalho?'_#62" as modelo_atual,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_r_'__'atualmente_qual_a_sua_forma_de_trabalho?'_#62" is not NULL
+group by "_'p2_r_'__'atualmente_qual_a_sua_forma_de_trabalho?'_#62"
+order by quantidade desc
+-- O modelo 100% remoto é o maior com 41,58%, seguido do híbrido flex com 18,36%--
+
+"_'p2_r_'__'atualmente_qual_a_sua_forma_de_trabalho?'_#62"
+
+ --14. Modelo de trabalho desejado--
+select "_'p2_s_'__'qual_a_forma_de_trabalho_ideal_para_você?'_#63" as modelo_desejado,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p2_s_'__'qual_a_forma_de_trabalho_ideal_para_você?'_#63" is not NULL
+group by "_'p2_s_'__'qual_a_forma_de_trabalho_ideal_para_você?'_#63"
+order by quantidade desc
+-- novamente os modelos 100% remoto e híbrido flex são os principais modelos, enquanto o 100% presenvial é desejado por apenas 1,81% dos profissionais que participaram da pesquisa--
+
+--15. Uso básico de IA--
+SELECT
+    CASE
+        WHEN "_'p4_m_'__'utiliza_chatgpt_ou_llms_no_trabalho?'_#238"
+             LIKE '%Não utilizo nenhum tipo%'
+            THEN 'Não utiliza IA Generativa'
+        ELSE 'Utiliza IA Generativa'
+    END AS uso_ia,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100.0 * COUNT(*) / SUM(COUNT(*)) OVER (),
+        2
+    ) AS percentual
+FROM tb_dh_23
+WHERE "_'p4_m_'__'utiliza_chatgpt_ou_llms_no_trabalho?'_#238" IS NOT NULL
+GROUP BY
+    CASE
+        WHEN "_'p4_m_'__'utiliza_chatgpt_ou_llms_no_trabalho?'_#238"
+             LIKE '%Não utilizo nenhum tipo%'
+            THEN 'Não utiliza IA Generativa'
+        ELSE 'Utiliza IA Generativa'
+    END
+ORDER BY quantidade DESC;
+--baseado nessa classificação de uso ou nao de IA, temos que 86% dos profissionais usam IAs em alguma parte do trabalho, enquanto os outros 14% não fazer uso de IA--
+
+ --16. IA generativa é prioridade na empresa?--
+select "_'p3_e_'__'ai_generativa_é_uma_prioridade_em_sua_empresa?'_#103" as IA_prioridade,
+    count(*) as quantidade,
+    round( 100.0 * count(*)/ sum(count(*)) over (), 2) as percentual
+from tb_dh_23
+where "_'p3_e_'__'ai_generativa_é_uma_prioridade_em_sua_empresa?'_#103" is not NULL
+group by "_'p3_e_'__'ai_generativa_é_uma_prioridade_em_sua_empresa?'_#103"
+order by quantidade desc
+-- Neste caso a maioria não respondeu a questão (83%) dos que responderam, 9% diz que não é prioridade

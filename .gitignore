@@ -1,0 +1,64 @@
+# --- ambiente Python ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- dados ---
+# A base vem do Kaggle e as saidas do pipeline vivem no S3.
+# Versionar so a amostra em data/amostras/.
+data/bronze/
+data/silver/
+data/gold/
+data/origem/
+data/*.csv
+data/*.parquet
+!data/amostras/
+!data/amostras/*.csv
+_silver/
+spark-warehouse/
+derby.log
+metastore_db/
+
+# --- Power BI ---
+# Vai versionado so o .pbix: um arquivo, que abre com os dados dentro.
+# Fora ficam o projeto em texto, os CSV que alimentam o modelo (~41 MB, a
+# Gold os gera) e o estado local do Desktop.
+*.pbip
+*.Report/
+*.SemanticModel/
+**/.pbi/
+**/cache.abf
+**/localSettings.json
+powerbi/gold_modelo_csv/
+powerbi/*.zip
+powerbi/_correcao/
+powerbi/GUIA_MONTAGEM_PBI.md
+powerbi/_backup_Report/
+powerbi/planos_de_fundo/
+
+# --- credenciais (nunca) ---
+.env
+*.pem
+credentials
+aws_credentials*
+.aws/
+kaggle.json
+
+# --- saida de execucao ---
+results/*.html
+
+# --- migracao ---
+# Script de uso unico, para trazer o .pbix e o enunciado da pasta antiga.
+# Depois de rodar ele nao tem mais funcao no repositorio.
+organizar.ps1
+
+# --- sistema ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

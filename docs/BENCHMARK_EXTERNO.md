@@ -1,6 +1,6 @@
 # Benchmark externo: contexto de mercado nas análises
 
-**TC3 Grupo 21** · Caio Bosnic · 30/08/2026
+**TC3** · Caio Bosnic · 30/08/2026
 Tabela: `gold_dw_dim_benchmark` (8 referências)
 Código: `glue/gold/benchmark_externo.py`
 

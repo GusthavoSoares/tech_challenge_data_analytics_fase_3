@@ -9,10 +9,17 @@ Entregáveis e decisões ainda abertos. Ordem de prioridade.
 | O que | Onde começa |
 |---|---|
 | Apresentação executiva (PPT) | a partir dos prints do dashboard e dos números de `results/` |
-| Desenho da arquitetura no draw.io | conferir se `docs/arquitetura_tc3.png` atende ou refazer com as três camadas e o Data Catalog transversal |
 | Notebooks `03_gold.ipynb` e `04_analises_e_graficos.ipynb` | `notebooks/` hoje tem Bronze, Silver e a validação da Silver |
 
 ## Aberto com o grupo
+
+**Qual desenho da arquitetura vai na apresentação.** Existem dois, e eles
+divergem. O do Gusthavo (`docs/arquitetura_dw_gusthavo.png`, fonte no Drive)
+mostra o Data Catalog como uma etapa entre a Gold e o Athena e termina em
+QuickSight. O nosso (`docs/arquitetura_tc3.drawio`, com `.svg` e `.png` ao lado)
+põe o Catalog como camada transversal às três, que é como o crawler roda de
+fato, e termina no Power BI, que foi a ferramenta usada. Decidir qual entra, ou
+se o do Gusthavo é atualizado a partir do `.drawio`.
 
 **Contagem de 2023.** O SQL do Gusthavo comenta 5.923 respostas, e a Silver tem
 5.293. Os dígitos são os mesmos em ordem diferente, o que sugere digitação, mas
@@ -27,6 +34,11 @@ apontando o crawler para um caminho com o nome desejado.
 
 ## Git
 
-Existe um repositório em `techchallenge/` cobrindo os três Tech Challenges, então
-`git init` dentro desta pasta criaria um repositório aninhado. Conferir
-`git remote -v` antes de decidir os comandos de push.
+O repositório do grupo é
+[`GusthavoSoares/tech_challenge_data_analytics_fase_3`](https://github.com/GusthavoSoares/tech_challenge_data_analytics_fase_3),
+e hoje traz a Bronze do Gusthavo: o notebook do ETL, as três consultas e o
+desenho do DW. Como as duas histórias começaram separadas, o que vem daqui entra
+por branch e Pull Request, não direto no `main`.
+
+Fonte do desenho da arquitetura, no Drive do Gusthavo:
+<https://drive.google.com/file/d/1DngqFuv4RscUxi_CCq9VnvH3tNjJUTdW/view?usp=sharing>

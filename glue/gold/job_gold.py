@@ -33,7 +33,7 @@ A pesquisa é anual e não tem data de evento: o grão de tempo é a edição. U
 tabela de datas com 1.095 linhas para 3 valores distintos só cria relacionamento
 morto. Decisão registrada em DECISOES_E_ACHADOS.md.
 
-Autor: Caio Bosnic (Grupo 21)
+Autor: Caio Bosnic
 """
 
 import functools

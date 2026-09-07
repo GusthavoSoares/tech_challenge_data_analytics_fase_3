@@ -9,7 +9,7 @@ Este módulo não roda nada sozinho. Ele é consumido por dois lugares:
 A lógica das asserções mora AQUI e só aqui. Se estivesse duplicada nos dois,
 uma correção num lugar sairia divergente do outro na primeira semana.
 
-Autor: Caio Bosnic (Grupo 21)
+Autor: Caio Bosnic
 """
 
 import glob

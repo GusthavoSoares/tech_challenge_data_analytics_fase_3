@@ -1,7 +1,7 @@
 """
 Camada GOLD: base compartilhada pelas 7 perguntas de negócio.
 
-TC3 Grupo 21. Combinado do grupo: **cada um constrói a Gold que alimenta as
+TC3. Combinado do grupo: **cada um constrói a Gold que alimenta as
 SUAS perguntas**, para não haver dois donos na mesma tabela. Este módulo é a
 parte comum, leitura da Silver, dimensões conformadas e os utilitários que
 evitam os erros de contagem que a base cobra caro.
@@ -26,7 +26,7 @@ from pyspark.sql import types as T
 
 from config_silver import parametro  # noqa: E402
 
-BUCKET = parametro("TC3_BUCKET", "s3://tc3-grupo21-datalake")
+BUCKET = parametro("TC3_BUCKET", "s3://tc3-datalake")
 PATH_SILVER = parametro("TC3_PATH_SILVER", f"{BUCKET}/silver/state_data")
 PATH_GOLD = parametro("TC3_PATH_GOLD", f"{BUCKET}/gold")
 DATABASE_GLUE = parametro("TC3_DATABASE", "state_of_data")

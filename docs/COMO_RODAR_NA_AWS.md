@@ -185,8 +185,9 @@ Cada um: **Save** e depois **Run**. Acompanhar em **Runs**. Se falhar, o erro es
 ### 2.6 Catalogar
 
 O database **não existe até você criar**. No wizard do crawler tem `Add database`.
-Nome usado: **`state_of_data`**, que nomeia o dado e não o time: o número do grupo
-muda a cada fase e um database chamado `grupo21` envelhece mal.
+Nome usado: **`state_of_data`**, que nomeia o dado e não o time: a composição
+do grupo muda a cada fase, e database batizado com número de turma
+envelhece mal.
 
 Duas formas de catalogar, as duas valem:
 

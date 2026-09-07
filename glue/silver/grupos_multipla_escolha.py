@@ -1,5 +1,5 @@
 """
-Grupos de múltipla escolha do State of Data Brasil. TC3 Grupo 21.
+Grupos de múltipla escolha do State of Data Brasil. TC3.
 
 ARQUIVO GERADO. Não editar à mão sem registrar o motivo aqui.
 

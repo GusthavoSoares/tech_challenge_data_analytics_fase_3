@@ -1,4 +1,4 @@
-# Validação da camada Bronze: TC3 Grupo 21
+# Validação da camada Bronze
 
 **Data:** 20/08/2026, revisado em 04/09/2026 · **Responsável:** Caio (dono da Silver/Gold)
 **Insumo:** os três CSVs exportados da Bronze pelo Gusthavo

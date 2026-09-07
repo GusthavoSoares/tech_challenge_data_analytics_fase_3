@@ -1,6 +1,6 @@
 # Contrato da camada Silver: `silver_dw_fat_respondente`
 
-**TC3 Grupo 21** · dono: Caio · atualizado em 30/08/2026
+**TC3** · dono: Caio · atualizado em 30/08/2026
 
 Este é o documento que o resto do grupo precisa para construir a Gold e as
 consultas do Athena **sem depender de mim**. Se algo aqui mudar, eu aviso.
@@ -12,7 +12,7 @@ consultas do Athena **sem depender de mim**. Se algo aqui mudar, eu aviso.
 | | |
 |---|---|
 | **Tabela** | `state_of_data.silver_dw_fat_respondente` |
-| **Caminho** | `s3://tc3-grupo21-datalake/silver/state_data/` |
+| **Caminho** | `s3://<bucket>/silver/state_data/` |
 | **Formato** | Parquet, tipado |
 | **Partição** | `ano_pesquisa` (2023 · 2024 · 2025) |
 | **Grão** | 1 linha por respondente por edição |

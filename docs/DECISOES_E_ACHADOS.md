@@ -1,6 +1,6 @@
 # TC3: Decisões de arquitetura e achados nas bases
 
-Registro das decisões acordadas com o Grupo 21 e das validações feitas nas bases do
+Registro das decisões acordadas com o grupo e das validações feitas nas bases do
 **State of Data Brasil**. Atualizado em **20/08/2026**.
 
 > Este arquivo guarda o que é específico deste desafio: as decisões tomadas e o

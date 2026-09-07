@@ -1,5 +1,5 @@
 """
-Contrato da camada Silver. TC3 Grupo 21.
+Contrato da camada Silver. TC3.
 
 Este módulo NÃO executa nada. Ele declara, em um só lugar:
 
@@ -332,7 +332,7 @@ def parametro(nome: str, padrao: str) -> str:
     return os.getenv(nome, padrao)
 
 
-BUCKET = parametro("TC3_BUCKET", "s3://tc3-grupo21-datalake")
+BUCKET = parametro("TC3_BUCKET", "s3://tc3-datalake")
 
 # Job parameter no Glue, variável de ambiente na máquina: o mesmo job roda nos
 # dois lugares sem branch no código.

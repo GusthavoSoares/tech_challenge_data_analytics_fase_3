@@ -1,6 +1,6 @@
 # Respostas das perguntas 1 a 6
 
-**TC3 Grupo 21** · Caio Bosnic · 30/08/2026
+**TC3** · Caio Bosnic · 30/08/2026
 Fonte: `gold_dw_p1_*` a `gold_dw_p6_*`, sobre a Silver (14.002 respondentes)
 A pergunta 7 está em [`RESPOSTA_P7.md`](RESPOSTA_P7.md).
 

@@ -1,4 +1,4 @@
-# TC3 Grupo 21, dependências para rodar local (fora do Glue).
+# TC3, dependências para rodar local (fora do Glue).
 # No Glue, o PySpark já vem no runtime; estas versões espelham o Glue 4.0.
 #
 # Instalação:

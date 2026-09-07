@@ -20,7 +20,7 @@ depender da de cima. As três linhas do manifesto abaixo repetem o que existe em
 
 Origem do código: notebook do Gusthavo (`notebooks/01_bronze.ipynb`).
 
-Executa como Glue Job (PySpark). Grupo 21.
+Executa como Glue Job (PySpark).
 """
 
 import os
@@ -58,7 +58,7 @@ def parametro(nome: str, padrao: str) -> str:
     return os.getenv(nome, padrao)
 
 
-BUCKET = parametro("TC3_BUCKET", "s3://tc3-grupo21-datalake")
+BUCKET = parametro("TC3_BUCKET", "s3://tc3-datalake")
 PATH_ENTRADA = parametro("TC3_PATH_ENTRADA", f"{BUCKET}/entrada")
 PATH_BRONZE = parametro("TC3_PATH_BRONZE", f"{BUCKET}/bronze/state_data")
 
@@ -100,7 +100,7 @@ def gravar(df: DataFrame, caminho: str) -> None:
 
 
 def main() -> None:
-    spark = SparkSession.builder.appName("tc3-grupo21-bronze").getOrCreate()
+    spark = SparkSession.builder.appName("tc3-bronze").getOrCreate()
 
     erros = []
     for arquivo, tabela, linhas_ok, colunas_ok in EDICOES:

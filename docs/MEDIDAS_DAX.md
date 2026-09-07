@@ -1,4 +1,4 @@
-# Medidas DAX: TC3 Grupo 21
+# Medidas DAX
 
 Todas as medidas ficam em uma tabela vazia chamada `_Medidas`
 (Inserir dados, tabela sem coluna, Ocultar a coluna). Assim elas não se misturam

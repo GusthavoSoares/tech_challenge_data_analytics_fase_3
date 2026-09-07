@@ -19,7 +19,7 @@ O que esta camada faz (e a Bronze não pode fazer):
 
 Executa como Glue Job (PySpark). Para rodar local, ver notebooks/03_silver_uniao.ipynb.
 
-Autor: Caio Bosnic (Grupo 21)
+Autor: Caio Bosnic
 """
 
 import sys
@@ -374,7 +374,7 @@ def construir_silver(spark: SparkSession) -> DataFrame:
 def main() -> None:
     spark = (
         SparkSession.builder
-        .appName("tc3-grupo21-silver")
+        .appName("tc3-silver")
         .config("spark.sql.sources.partitionOverwriteMode", "dynamic")
         .getOrCreate()
     )

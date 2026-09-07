@@ -1,6 +1,6 @@
 # Tech Challenge Fase 3: Big Data to Analytics
 
-**PosTech FIAP Data Analytics | Grupo 21**
+**PosTech FIAP Data Analytics**
 Pipeline AWS sobre a pesquisa **State of Data Brasil** (Data Hackers + Bain),
 três edições, arquitetura em camadas Bronze / Silver / Gold.
 

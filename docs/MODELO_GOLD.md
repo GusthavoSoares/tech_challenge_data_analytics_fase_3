@@ -1,4 +1,4 @@
-# Modelo da camada Gold: TC3 Grupo 21
+# Modelo da camada Gold
 
 **Uma Gold, um modelo dimensional, sete perguntas.**
 Caio Bosnic · 30/08/2026

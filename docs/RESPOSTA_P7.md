@@ -1,6 +1,6 @@
 # Pergunta 7: Oportunidades e desafios para investir em Dados e IA
 
-**TC3 Grupo 21** · Caio Bosnic · 30/08/2026
+**TC3** · Caio Bosnic · 30/08/2026
 Fonte: `gold_dw_p7_*`, sobre a Silver das três edições (14.002 respondentes)
 
 > **Cliente:** instituição financeira de grande porte querendo expandir sua área

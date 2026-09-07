@@ -1,0 +1,5 @@
+sk_modelo_trabalho,modelo_trabalho,rotulo,eh_remoto,eh_presencial,tem_autonomia
+0569ab4f29228b28,Modelo_100%_presencial,100% presencial,False,True,False
+c9ed1c765640c18d,Modelo_100%_remoto,100% remoto,True,False,True
+3274ca06d4c94bff,Modelo_hibrido_com_dias_fixos_de_trabalho_presencial,Híbrido com dias fixos,False,False,False
+7e9f6dc0fde56d40,Modelo_hibrido_flexivel_(o_funcionario_tem_liberdade_para_escolher_quando_estar_no_escritorio_presencialmente),Híbrido flexível,False,False,True

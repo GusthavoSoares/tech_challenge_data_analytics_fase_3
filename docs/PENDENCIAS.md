@@ -1,0 +1,43 @@
+# O que falta
+
+Entregáveis e decisões ainda abertos. Ordem de prioridade.
+
+---
+
+## Entregáveis
+
+Os três estão entregues: material executivo em `apresentacao/`, diagrama da
+arquitetura em `docs/arquitetura_tc3.drawio` e dentro do material, scripts e
+notebooks em `glue/`, `sql/` e `notebooks/`.
+
+## Aberto com o grupo
+
+**Qual desenho da arquitetura vai na apresentação.** Existem dois, e eles
+divergem. O do Gusthavo (`docs/arquitetura_dw_gusthavo.png`, fonte no Drive)
+mostra o Data Catalog como uma etapa entre a Gold e o Athena e termina em
+QuickSight. O nosso (`docs/arquitetura_tc3.drawio`, com `.svg` e `.png` ao lado)
+põe o Catalog como camada transversal às três, que é como o crawler roda de
+fato, e termina no Power BI, que foi a ferramenta usada. Decidir qual entra, ou
+se o do Gusthavo é atualizado a partir do `.drawio`.
+
+**Contagem de 2023.** O SQL do Gusthavo comenta 5.923 respostas, e a Silver tem
+5.293. Os dígitos são os mesmos em ordem diferente, o que sugere digitação, mas
+vale confirmar antes de assumir.
+
+## Ajuste cosmético no catálogo
+
+A tabela da Silver aparece no Glue Data Catalog como `state_data`, porque o
+crawler nomeia pela última pasta do caminho (`silver/state_data/`). Destoa de
+`bronze_dw_*` e `gold_dw_*`. Resolve com uma `CREATE VIEW` no Athena, ou
+apontando o crawler para um caminho com o nome desejado.
+
+## Git
+
+O repositório do grupo é
+[`GusthavoSoares/tech_challenge_data_analytics_fase_3`](https://github.com/GusthavoSoares/tech_challenge_data_analytics_fase_3),
+e hoje traz a Bronze do Gusthavo: o notebook do ETL, as três consultas e o
+desenho do DW. Como as duas histórias começaram separadas, o que vem daqui entra
+por branch e Pull Request, não direto no `main`.
+
+Fonte do desenho da arquitetura, no Drive do Gusthavo:
+<https://drive.google.com/file/d/1DngqFuv4RscUxi_CCq9VnvH3tNjJUTdW/view?usp=sharing>

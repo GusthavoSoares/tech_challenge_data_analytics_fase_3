@@ -1,0 +1,14 @@
+sk_faixa_salarial,faixa_salarial,rotulo,ordem,limite_inferior,limite_superior,ponto_medio
+634713c5044826b2,Menos_de_R$_1.000/mes,até R$ 1.000,1,0,1000.0,500.0
+5cc11ce5bfb49a2b,de_R$_1.001/mes_a_R$_2.000/mes,R$ 1–2 mil,2,1001,2000.0,1500.5
+fe70e8c8015640e1,de_R$_2.001/mes_a_R$_3.000/mes,R$ 2–3 mil,3,2001,3000.0,2500.5
+67d183cf4199ecb9,de_R$_3.001/mes_a_R$_4.000/mes,R$ 3–4 mil,4,3001,4000.0,3500.5
+85595ffccc905ca5,de_R$_4.001/mes_a_R$_6.000/mes,R$ 4–6 mil,5,4001,6000.0,5000.5
+e25c1203a442e6ba,de_R$_6.001/mes_a_R$_8.000/mes,R$ 6–8 mil,6,6001,8000.0,7000.5
+d95903abcbe2576f,de_R$_8.001/mes_a_R$_12.000/mes,R$ 8–12 mil,7,8001,12000.0,10000.5
+940f48d40481453d,de_R$_12.001/mes_a_R$_16.000/mes,R$ 12–16 mil,8,12001,16000.0,14000.5
+c142a48bfad4a258,de_R$_16.001/mes_a_R$_20.000/mes,R$ 16–20 mil,9,16001,20000.0,18000.5
+77ec651ae4aaf72e,de_R$_20.001/mes_a_R$_25.000/mes,R$ 20–25 mil,10,20001,25000.0,22500.5
+38f8b03d1890969c,de_R$_25.001/mes_a_R$_30.000/mes,R$ 25–30 mil,11,25001,30000.0,27500.5
+a78cd477da7a2759,de_R$_30.001/mes_a_R$_40.000/mes,R$ 30–40 mil,12,30001,40000.0,35000.5
+53da782f7c8647e0,Acima_de_R$_40.001/mes,acima de R$ 40 mil,13,40001,,40001.0
